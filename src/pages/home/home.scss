@@ -19,7 +19,7 @@
   --ed-glass: rgba(26, 26, 26, 0.6);
   --ed-px-desktop: 80px;
   --ed-px-mobile: 24px;
-  --ed-section-gap: 120px;
+  --ed-section-gap: 80px;
 }
 
 // ── Reset / Base ───────────────────────────────────────────
@@ -63,7 +63,7 @@
   display: flex;
   // justify-content: space-between;
   align-items: center;
-  padding: 24px var(--ed-px-desktop);
+  padding: 16px var(--ed-px-desktop);
   background: transparent;
   backdrop-filter: blur(60px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -77,7 +77,7 @@
 
 .ed-logo {
   font-family: "Sora", sans-serif;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--ed-primary);
   letter-spacing: -1px;
@@ -212,12 +212,12 @@
   background: rgba(242, 202, 80, 0.1);
   border: 1px solid rgba(242, 202, 80, 0.2);
   backdrop-filter: blur(10px);
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 9999px;
   margin-bottom: 24px;
 
   span {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     color: var(--ed-primary);
     letter-spacing: 0.2em;
@@ -226,7 +226,7 @@
 }
 
 .ed-hero-title {
-  font-size: 72px;
+  font-size: 44px;
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 24px;
@@ -234,7 +234,7 @@
 }
 
 .ed-hero-desc {
-  font-size: 18px;
+  font-size: 14px;
   color: var(--ed-on-surface-variant);
   margin-bottom: 40px;
   max-width: 500px;
@@ -248,7 +248,7 @@
 .ed-btn-primary {
   background: var(--ed-primary);
   color: var(--ed-on-primary);
-  padding: 16px 40px;
+  padding: 12px 24px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 12px;
@@ -308,7 +308,7 @@
 
 .ed-stat-value {
   font-family: "Sora", sans-serif;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   color: white;
 }
@@ -331,13 +331,13 @@
   margin-bottom: 80px;
 
   h2 {
-    font-size: 48px;
+    font-size: 38px;
     color: white;
     margin-bottom: 16px;
   }
 
   p {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--ed-on-surface-variant);
     max-width: 600px;
     margin: 0 auto;
@@ -394,7 +394,7 @@
 }
 
 .ed-bento-tag {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--ed-primary);
   text-transform: uppercase;
@@ -403,7 +403,7 @@
 }
 
 .ed-bento-title {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 600;
   color: white;
 }
@@ -452,7 +452,7 @@
 }
 
 .ed-card-type {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -460,7 +460,7 @@
 }
 
 .ed-card-subtitle {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--ed-on-surface-variant);
   letter-spacing: 0.1em;
   margin-bottom: 40px;
@@ -480,12 +480,12 @@
 
 .ed-price-val {
   font-family: "Sora", sans-serif;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
   color: white;
 
   .ed-pricing-card--featured & {
-    font-size: 64px;
+    font-size: 44px;
   }
 }
 
@@ -497,6 +497,7 @@
 .ed-feature-list {
   list-style: none;
   margin-bottom: 48px;
+  padding: 0;
 }
 
 .ed-feature-item {
@@ -505,6 +506,7 @@
   gap: 12px;
   color: var(--ed-on-surface-variant);
   margin-bottom: 16px;
+  font-size: 14px;
 
   .ed-pricing-card--featured & {
     color: white;
@@ -569,7 +571,7 @@
 
 .ed-policy-note-text {
   font-family: "Sora", sans-serif;
-  font-size: 14px;
+  font-size: 10px;
   color: var(--ed-on-surface-variant);
   letter-spacing: 0.05em;
   display: inline-flex;
@@ -621,7 +623,7 @@
   flex: 1;
 
   h2 {
-    font-size: 64px;
+    font-size: 40px;
     line-height: 1;
     text-transform: uppercase;
     margin-bottom: 32px;
@@ -670,7 +672,7 @@
 
 .ed-contact-value {
   font-family: "Sora", sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--ed-primary);
   margin: 0 !important;
@@ -817,7 +819,7 @@
 // ── Footer ─────────────────────────────────────────────────
 
 .ed-footer {
-  padding: 64px var(--ed-px-desktop);
+  padding: 30px var(--ed-px-desktop);
   background: #0e0e0e;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
@@ -828,12 +830,12 @@
 }
 
 .ed-footer-brand .ed-logo {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 16px;
 }
 
 .ed-copyright {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--ed-on-surface-variant);
   text-transform: uppercase;
 }
