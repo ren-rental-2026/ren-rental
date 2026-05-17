@@ -36,7 +36,7 @@ const BENTO_CARDS = [
   {
     alt: "Climate Control",
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9uiviPwfbt_Mfeg5k873BBVGqMvSApMdrm0E8pacudXe2yus7Akhgbhs--1lVW_Ek21RLqRzqorllm69dR2tahG4LodEVRTRcQsznaxK1zHnfDmGwcknDRNa4vJSZw4kLFNdwitF4fzW3C8Warn512KkAGtR_ITiD-DUksbr5ayWPTnJWc4Lb7gcpY39HAxwJutmVJ8n7FVuOyq3X_yu_v3jfULWO0em28IVJgdCkAf-EVPZrhl0pSJjPHUdC1R2-Hp_N1eIHQGdD",
-    title: "CONVENIENCE",
+    title: "Convenience",
     tag: "Climate Control",
     size: "small",
   },
