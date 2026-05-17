@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELITE DRIVE | Renault Triber 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #f2ca50;
+            --primary-dark: #d4af37;
+            --on-primary: #3c2f00;
+            --background: #131313;
+            --surface: #1c1b1b;
+            --surface-container: #201f1f;
+            --on-surface: #e5e2e1;
+            --on-surface-variant: #d0c5af;
+            --outline: #4d4635;
+            --glass: rgba(26, 26, 26, 0.6);
+            --container-padding-desktop: 80px;
+            --container-padding-mobile: 24px;
+            --section-gap: 120px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--on-surface);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-sora {
+            font-family: 'Sora', sans-serif;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .metallic-gradient {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%);
+        }
+
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px var(--container-padding-desktop);
+            background: transparent;
+            backdrop-filter: blur(60px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.05);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--on-surface-variant);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--on-surface);
+            transform: scale(1.05);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 4px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-icon {
+            color: var(--on-surface-variant);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-icon:hover {
+            color: var(--primary);
+        }
+
+        .btn-book {
+            background: var(--primary);
+            color: var(--on-primary);
+            font-weight: 700;
+            font-size: 12px;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-book:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--container-padding-desktop);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--background), rgba(19, 19, 19, 0.6), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(242, 202, 80, 0.1);
+            border: 1px solid rgba(242, 202, 80, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            margin-bottom: 24px;
+        }
+
+        .badge span {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--on-surface-variant);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 24px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--on-primary);
+            padding: 16px 40px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: 48px;
+            left: var(--container-padding-desktop);
+            display: flex;
+            gap: 32px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Bento Grid Section */
+        .experience {
+            padding: var(--section-gap) var(--container-padding-desktop);
+            background: var(--background);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--on-surface-variant);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, 400px);
+            gap: 24px;
+        }
+
+        .bento-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--surface-container);
+        }
+
+        .bento-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .bento-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .bento-content {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--background), transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+        }
+
+        .bento-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .bento-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .bento-large { grid-column: span 8; }
+        .bento-vertical { grid-column: span 4; }
+        .bento-small { grid-column: span 4; }
+        .bento-medium { grid-column: span 8; }
+
+        /* Pricing Section */
+        .investment {
+            padding: var(--section-gap) var(--container-padding-desktop);
+            background: var(--surface-container);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            padding: 40px;
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .pricing-card.featured {
+            background: var(--background);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
+            transform: scale(1.05);
+            z-index: 10;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 0;
+            right: 40px;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--on-primary);
+            padding: 4px 16px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .card-type {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .price-val {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .featured .price-val {
+            font-size: 64px;
+        }
+
+        .price-unit {
+            color: var(--on-surface-variant);
+            font-size: 16px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--on-surface-variant);
+            margin-bottom: 16px;
+        }
+
+        .featured .feature-item {
+            color: white;
+        }
+
+        .feature-item span {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .btn-select {
+            width: 100%;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(229, 226, 225, 0.2);
+            background: transparent;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-select:hover {
+            background: rgba(229, 226, 225, 0.05);
+        }
+
+        .btn-reserve {
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--on-primary);
+            border: none;
+            font-weight: 800;
+            font-size: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        /* Concierge Section */
+        .concierge-section {
+            padding: var(--section-gap) var(--container-padding-desktop);
+            background: var(--background);
+        }
+
+        .concierge-card {
+            display: flex;
+            gap: 64px;
+            align-items: center;
+            padding: 64px;
+            border-radius: 16px;
+        }
+
+        .concierge-img {
+            flex: 1;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .concierge-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .concierge-info {
+            flex: 1;
+        }
+
+        .concierge-info h2 {
+            font-size: 64px;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .contact-box {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--surface-container);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .contact-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--on-surface-variant);
+        }
+
+        .contact-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .concierge-btns {
+            display: flex;
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px var(--container-padding-desktop);
+            background: #0e0e0e;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .footer-brand .logo {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 24px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .navbar { padding: 24px 40px; }
+            .hero { padding: 0 40px; }
+            .hero-title { font-size: 56px; }
+            .bento-grid { grid-template-rows: repeat(2, 350px); }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-card.featured { grid-column: span 2; transform: scale(1); margin: 20px 0; }
+            .concierge-card { flex-direction: column; padding: 40px; }
+            .concierge-img { width: 100%; aspect-ratio: 16/9; }
+            footer { padding: 40px; flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width: 767px) {
+            :root {
+                --container-padding-desktop: 24px;
+            }
+            .nav-links, .nav-actions .nav-icon { display: none; }
+            .hero-title { font-size: 40px; }
+            .hero-btns { flex-direction: column; }
+            .hero-stats { position: relative; bottom: auto; left: auto; margin-top: 60px; flex-wrap: wrap; }
+            .bento-grid { display: flex; flex-direction: column; }
+            .bento-card { height: 300px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { grid-column: span 1; }
+            .concierge-info h2 { font-size: 40px; }
+            .contact-value { font-size: 24px; }
+            .concierge-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+<div class="logo">ELITE DRIVE</div>
+<div class="nav-links">
+<a class="nav-link active" href="#">Fleet</a>
+<a class="nav-link" href="#">Experience</a>
+<a class="nav-link" href="#">Concierge</a>
+<a class="nav-link" href="#">Locations</a>
+</div>
+<div class="nav-actions">
+<span class="material-symbols-outlined nav-icon">search</span>
+<span class="material-symbols-outlined nav-icon">account_circle</span>
+<button class="btn-book">BOOK NOW</button>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-bg">
+<img alt="Renault Triber 2026 Gold" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBZny43RJhA6QWne7vWp-rcf1ato9QYYGfJAXg030wUn5RbNxNmSDPyDKGhIIhFMypbT9QuWDE9HuWaGOXLsiTNhGdwYU-4BXNX343orOtGbNA_wQkEuCMm9IqIUO8yvg5ElEo61WWsVI1tozcfpUg_c5gunLUrxwWOL4NFHKn2_aU9rO6VTPBpA0-dXEu8lnGixa1RXm1dkGMG20odgTw9vWuZPn8FAxsdCkBFyGy6_Q-uUZm19FUYFkWCKVN6Od6Yos7gXRGkgx"/>
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<div class="badge">
+<span>Introducing the 2026 Edition</span>
+</div>
+<h1 class="hero-title">Drive Beyond <br/><span class="text-glow">Luxury.</span></h1>
+<p class="hero-desc">Experience the pinnacle of urban versatility. The Renault Triber 2026 redefines the multi-purpose vehicle with precision engineering and elite aesthetics.</p>
+<div class="hero-btns">
+<button class="btn-primary">CONFIGURE YOUR DRIVE</button>
+<button class="btn-outline">EXPLORE SPECS</button>
+</div>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<span class="stat-label">Engine</span>
+<span class="stat-value">1.0L Turbo</span>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<span class="stat-label">Capacity</span>
+<span class="stat-value">7 Seats</span>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<span class="stat-label">Efficiency</span>
+<span class="stat-value">19.5 KM/L</span>
+</div>
+</div>
+</section>
+<section class="experience">
+<div class="section-header">
+<h2>The Triber Experience</h2>
+<p>Meticulously crafted for those who demand more from every journey. Discover the fusion of space and sophistication.</p>
+</div>
+<div class="bento-grid">
+<div class="bento-card bento-large">
+<img alt="Triber Interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_YOjmVSz7jK6piMO2X3gBMRszVlLDkhd3toE5qLl1f9Obne7d0ixQA0OuQwCbJm2QrfIj80xC_WcXmukLQgWVD22yJSq9U4rIlr8DUz6YH6sucmfc699Vqm1ANed1bvHICRqgQS-gCb2lpYYps4mvrzIeMhe3V0T5pAdGq_hRf427dJXN5sVCKcE3_k6uNuMBGO2UfZZ5GT7pN39rMSe2J0Ob0j62hHvfl8N13D_NwSH5b7rS9OpDzIeVPGh7m4tbjRWVT2kGp5iu"/>
+<div class="bento-content">
+<span class="bento-tag">Craftsmanship</span>
+<h3 class="bento-title">Spacious 7 Seater</h3>
+</div>
+</div>
+<div class="bento-card bento-vertical">
+<img alt="Infotainment Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVhJUg0OuFstbOpVRgPmr9FTAXbjfuA1tO40jAUPtfZcBdttqOSpT2HA6Qof0bdLLbAJkn3yvpCsQC47QDwRMYb_SyRSWT0JtgwiwcPnBXcimQnOGgEmo5-DqN4gkMc9si2jIb2rmSNPK_V52s92qB45-3Aw24zYB5ZhRoicUMeONuTBcFm3hbRT-7P5bWhpw1Dbto24KcjPwfINyDI0aDv1Sp2HLgIEEvqo_W5o_aNuWF8gAh1jxFvN96LsqhvKocdXlP3uw_LyVH"/>
+<div class="bento-content">
+<span class="bento-tag">Technology</span>
+<h3 class="bento-title">Smart Infotainment</h3>
+</div>
+</div>
+<div class="bento-card bento-small">
+<img alt="Climate Control" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9uiviPwfbt_Mfeg5k873BBVGqMvSApMdrm0E8pacudXe2yus7Akhgbhs--1lVW_Ek21RLqRzqorllm69dR2tahG4LodEVRTRcQsznaxK1zHnfDmGwcknDRNa4vJSZw4kLFNdwitF4fzW3C8Warn512KkAGtR_ITiD-DUksbr5ayWPTnJWc4Lb7gcpY39HAxwJutmVJ8n7FVuOyq3X_yu_v3jfULWO0em28IVJgdCkAf-EVPZrhl0pSJjPHUdC1R2-Hp_N1eIHQGdD"/>
+<div class="bento-content">
+<h3 class="bento-title">Climate Control</h3>
+</div>
+</div>
+<div class="bento-card bento-medium">
+<img alt="Triber Boot Space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ507g742oNLui_paoZfgrn2HRcbVZ0U9MhD920FgWmJ5Igq4f9nrYSW259j8iSliVn76tCR10AtuS3QzHwAfHUEDA9QXsBqY_nhd1jB2-2O1MdD8BdHzKVEy95ECUD0yAm5EVdTHBA4oEqBO_QAk_lgUriJ8J0aSVeuxqzEvld5Q1Cw6KxSHXTfRx2MbObMKWnmVNSLGmkrDvsvu9wYuy-Fxvh2jhyiB0Rl8R5Hcbl5omUittTnMcvaqwAU4-i6qQSGKIfE6il06O"/>
+<div class="bento-content">
+<span class="bento-tag">Versatility</span>
+<h3 class="bento-title">625L Boot Space</h3>
+</div>
+</div>
+</div>
+</section>
+<section class="investment">
+<div class="section-header">
+<span class="bento-tag" style="display: block; margin-bottom: 8px;">Reservation Plans</span>
+<h2>The Investment</h2>
+</div>
+<div class="pricing-grid">
+<div class="pricing-card glass-panel">
+<h4 class="card-type">City Drive</h4>
+<p class="card-subtitle">For the Impulse</p>
+<div class="price-row">
+<span class="price-val">₹2500</span>
+<span class="price-unit">/ DAY</span>
+</div>
+<ul class="feature-list">
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> 150 KM Included</li>
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> 24/7 Roadside Support</li>
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> Insurance Covered</li>
+</ul>
+<button class="btn-select">SELECT PLAN</button>
+</div>
+<div class="pricing-card featured">
+<div class="featured-badge">Most Exclusive</div>
+<h4 class="card-type">Weekend Escape</h4>
+<p class="card-subtitle" style="color: var(--primary);">For the Connoisseur</p>
+<div class="price-row">
+<span class="price-val">₹3000</span>
+<span class="price-unit">/ DAY</span>
+</div>
+<ul class="feature-list">
+<li class="feature-item"><span class="material-symbols-outlined">verified</span> 300 KM Included</li>
+<li class="feature-item"><span class="material-symbols-outlined">verified</span> Priority Concierge</li>
+<li class="feature-item"><span class="material-symbols-outlined">verified</span> Complimentary Snacks</li>
+<li class="feature-item"><span class="material-symbols-outlined">verified</span> Unlimited Freedom</li>
+</ul>
+<button class="btn-reserve metallic-gradient">RESERVE NOW</button>
+</div>
+<div class="pricing-card glass-panel">
+<h4 class="card-type">Long Haul</h4>
+<p class="card-subtitle">For the Escape</p>
+<div class="price-row">
+<span class="price-val">₹11</span>
+<span class="price-unit">/ KM</span>
+</div>
+<ul class="feature-list">
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> Pay As You Drive</li>
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> Interstate Permits Incl.</li>
+<li class="feature-item"><span class="material-symbols-outlined">check_circle</span> Unlimited Days</li>
+</ul>
+<button class="btn-select">SELECT PLAN</button>
+</div>
+</div>
+</section>
+<section class="concierge-section">
+<div class="concierge-card glass-panel" style="border: none;">
+<div class="concierge-img">
+<img alt="Elite Concierge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4NpFOm49mlgXEpOFToQ550YQ0uH16zupMNgtDOQpxyRsrAEhlkgLlByEFZIihovryU4Jsq7aq07Mflnj0YBRUwun20E_dS62SiSV6Ld-6bTPAWxxmywWqoODT1u6inPeIwijbua4Yds12kkm7oA9O7vyUmkRLw9wSIyp9e2wkZTr-U5X14SsWz9vhzrSmT4hnkGfYUvo7kwJaA4ZDsQVv2yVDwBPC27a4sgCRyHWXRbJ86d2hTVhWZCr5RwZCpaSX74dtfgBmtmzl"/>
+</div>
+<div class="concierge-info">
+<span class="bento-tag">Direct Access</span>
+<h2>Elite Concierge</h2>
+<p class="hero-desc" style="max-width: 100%;">Our specialists are ready to architect your perfect driving experience. From fleet selection to route planning, every detail is managed with absolute precision.</p>
+<div class="contact-box">
+<div class="contact-item">
+<div class="icon-wrapper">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="contact-label">Hotline 24/7</p>
+<p class="contact-value">9788309432</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="icon-wrapper">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="contact-label">Global Headquarters</p>
+<p style="font-size: 18px; font-weight: 600;">Prestige Tower, Floor 88, City Prime</p>
+</div>
+</div>
+</div>
+<div class="concierge-btns">
+<button class="btn-primary metallic-gradient">INQUIRE NOW</button>
+<button class="btn-outline">BROCHURE</button>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer-brand">
+<div class="logo">ELITE DRIVE</div>
+<p class="copyright">© 2026 ELITE DRIVE. ALL RIGHTS RESERVED. PRECISION ENGINEERED RENTAL.</p>
+</div>
+<div class="footer-links">
+<a class="footer-link" href="#">PRIVACY POLICY</a>
+<a class="footer-link" href="#">TERMS OF SERVICE</a>
+<a class="footer-link" href="#">FLEET LOG</a>
+<a class="footer-link" href="#">CAREERS</a>
+</div>
+<div class="social-icons">
+<div class="social-btn">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="social-btn">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</div>
+</footer>
+<!-- Enquiry Modal -->
+<div class="modal-overlay" id="enquiryModal" style="display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+<div class="modal-content glass-panel" style="position: relative; width: 100%; max-width: 400px; padding: 40px; border-radius: 24px; border: 1px solid var(--primary-dark); text-align: center; box-shadow: 0 0 50px rgba(212, 175, 55, 0.2); transform: translateY(20px); transition: transform 0.3s ease;">
+<button id="closeModal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--on-surface-variant); cursor: pointer;">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h3 class="font-sora" style="font-size: 28px; color: white; margin-bottom: 8px;">Elite Inquiry</h3>
+<p style="font-size: 14px; color: var(--on-surface-variant); margin-bottom: 32px;">Experience personalized concierge assistance for your 2026 Triber rental.</p>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<a href="tel:9788309432" style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: var(--primary); color: var(--on-primary); text-decoration: none; border-radius: 12px; font-weight: 700; transition: transform 0.2s;">
+<span class="material-symbols-outlined">call</span>
+        Call 9788309432
+      </a>
+<a href="#" style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: #25D366; color: white; text-decoration: none; border-radius: 12px; font-weight: 700; transition: transform 0.2s;">
+<span class="material-symbols-outlined">chat</span>
+        Chat on WhatsApp
+      </a>
+</div>
+</div>
+</div>
+<script>
+  const modal = document.getElementById('enquiryModal');
+  const modalContent = modal.querySelector('.modal-content');
+  const openButtons = document.querySelectorAll('.btn-primary.metallic-gradient, .btn-book');
+  const closeButton = document.getElementById('closeModal');
+
+  const openModal = (e) => {
+    e.preventDefault();
+    modal.style.display = 'flex';
+    setTimeout(() => {
+      modal.style.opacity = '1';
+      modal.style.pointerEvents = 'auto';
+      modalContent.style.transform = 'translateY(0)';
+    }, 10);
+  };
+
+  const closeModal = () => {
+    modal.style.opacity = '0';
+    modal.style.pointerEvents = 'none';
+    modalContent.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300);
+  };
+
+  openButtons.forEach(btn => {
+    if (btn.innerText.includes('INQUIRE') || btn.innerText.includes('BOOK')) {
+        btn.addEventListener('click', openModal);
+    }
+  });
+
+  closeButton.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+</script></body></html>

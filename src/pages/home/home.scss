@@ -1,0 +1,987 @@
+// ============================================================
+// EliteDrive.scss — scoped BEM-style with ed- prefix
+// ============================================================
+
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
+// ── Design Tokens ──────────────────────────────────────────
+:root {
+  --ed-primary: #f2ca50;
+  --ed-primary-dark: #d4af37;
+  --ed-on-primary: #3c2f00;
+  --ed-bg: #131313;
+  --ed-surface: #1c1b1b;
+  --ed-surface-container: #201f1f;
+  --ed-on-surface: #e5e2e1;
+  --ed-on-surface-variant: #d0c5af;
+  --ed-outline: #4d4635;
+  --ed-glass: rgba(26, 26, 26, 0.6);
+  --ed-px-desktop: 80px;
+  --ed-px-mobile: 24px;
+  --ed-section-gap: 120px;
+}
+
+// ── Reset / Base ───────────────────────────────────────────
+.ed-root {
+  background-color: var(--ed-bg);
+  color: var(--ed-on-surface);
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Sora", sans-serif;
+  }
+}
+
+// ── Utilities ──────────────────────────────────────────────
+.ed-text-glow {
+  color: var(--ed-primary);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+}
+
+.ed-metallic-gradient {
+  background: linear-gradient(135deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%);
+}
+
+.ed-glass-panel {
+  background: var(--ed-glass);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// ── Navbar ─────────────────────────────────────────────────
+.ed-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  padding: 24px var(--ed-px-desktop);
+  background: transparent;
+  backdrop-filter: blur(60px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.05);
+  transition: background 0.3s ease;
+
+  &--scrolled {
+    background: rgba(19, 19, 19, 0.92);
+  }
+}
+
+.ed-logo {
+  font-family: "Sora", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ed-primary);
+  letter-spacing: -1px;
+}
+
+.ed-nav-links {
+  display: flex;
+  gap: 48px;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 75% !important;
+}
+
+.ed-nav-link {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ed-on-surface-variant);
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: var(--ed-on-surface);
+    transform: scale(1.05);
+  }
+
+  &--active {
+    color: var(--ed-primary);
+    border-bottom: 2px solid var(--ed-primary);
+    padding-bottom: 4px;
+  }
+}
+
+.ed-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ed-nav-icon {
+  color: var(--ed-on-surface-variant);
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: "Material Symbols Outlined";
+
+  &:hover {
+    color: var(--ed-primary);
+  }
+}
+
+.ed-btn-book {
+  background: var(--ed-primary);
+  color: var(--ed-on-primary);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.ed-btn-enquiry {
+  background: transparent;
+  border: 1px solid var(--ed-primary);
+  color: var(--ed-primary);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 10px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background: var(--ed-primary);
+    color: var(--ed-on-primary);
+    transform: scale(1.05);
+  }
+}
+
+// ── Hero ───────────────────────────────────────────────────
+.ed-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--ed-px-desktop);
+  overflow: hidden;
+}
+
+.ed-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.ed-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--ed-bg),
+    rgba(19, 19, 19, 0.6),
+    transparent
+  );
+}
+
+.ed-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+}
+
+.ed-badge {
+  display: inline-block;
+  background: rgba(242, 202, 80, 0.1);
+  border: 1px solid rgba(242, 202, 80, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  margin-bottom: 24px;
+
+  span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ed-primary);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.ed-hero-title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.ed-hero-desc {
+  font-size: 18px;
+  color: var(--ed-on-surface-variant);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.ed-hero-btns {
+  display: flex;
+  gap: 24px;
+}
+
+.ed-btn-primary {
+  background: var(--ed-primary);
+  color: var(--ed-on-primary);
+  padding: 16px 40px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+  }
+}
+
+.ed-btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.ed-hero-stats {
+  position: absolute;
+  bottom: 48px;
+  left: var(--ed-px-desktop);
+  display: flex;
+  gap: 32px;
+  z-index: 10;
+}
+
+.ed-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ed-stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ed-primary);
+  text-transform: uppercase;
+}
+
+.ed-stat-value {
+  font-family: "Sora", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+}
+
+.ed-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  align-self: center;
+}
+
+// ── Experience / Bento ────────────────────────────────────
+.ed-experience {
+  padding: var(--ed-section-gap) var(--ed-px-desktop);
+  background: var(--ed-bg);
+}
+
+.ed-section-header {
+  text-align: center;
+  margin-bottom: 80px;
+
+  h2 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 18px;
+    color: var(--ed-on-surface-variant);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.ed-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 400px);
+  gap: 24px;
+}
+
+.ed-bento-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--ed-surface-container);
+  cursor: grab;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &--large {
+    grid-column: span 8;
+  }
+  &--vertical {
+    grid-column: span 4;
+  }
+  &--small {
+    grid-column: span 4;
+  }
+  &--medium {
+    grid-column: span 8;
+  }
+}
+
+.ed-bento-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--ed-bg), transparent 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+}
+
+.ed-bento-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ed-primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+
+.ed-bento-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+}
+
+// ── Pricing ────────────────────────────────────────────────
+.ed-investment {
+  padding: var(--ed-section-gap) var(--ed-px-desktop);
+  background: var(--ed-surface-container);
+}
+
+.ed-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.ed-pricing-card {
+  padding: 40px;
+  border-radius: 16px;
+  text-align: left;
+  position: relative;
+
+  &--featured {
+    background: var(--ed-bg);
+    border: 2px solid var(--ed-primary);
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
+    transform: scale(1.05);
+    z-index: 10;
+  }
+}
+
+.ed-featured-badge {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  transform: translateY(-50%);
+  background: var(--ed-primary);
+  color: var(--ed-on-primary);
+  padding: 4px 16px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ed-card-type {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.ed-card-subtitle {
+  font-size: 12px;
+  color: var(--ed-on-surface-variant);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+
+  &--featured {
+    color: var(--ed-primary);
+  }
+}
+
+.ed-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.ed-price-val {
+  font-family: "Sora", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+
+  .ed-pricing-card--featured & {
+    font-size: 64px;
+  }
+}
+
+.ed-price-unit {
+  color: var(--ed-on-surface-variant);
+  font-size: 16px;
+}
+
+.ed-feature-list {
+  list-style: none;
+  margin-bottom: 48px;
+}
+
+.ed-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ed-on-surface-variant);
+  margin-bottom: 16px;
+
+  .ed-pricing-card--featured & {
+    color: white;
+  }
+
+  .material-symbols-outlined {
+    color: var(--ed-primary);
+    font-size: 18px;
+  }
+}
+
+.ed-btn-select {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 226, 225, 0.2);
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: rgba(229, 226, 225, 0.05);
+  }
+}
+
+.ed-btn-reserve {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  color: var(--ed-on-primary);
+  border: none;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    filter 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+}
+
+// ── Policy Notes ──────────────────────────────────────────
+.ed-policy-notes-container {
+  margin-top: 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ed-policy-note {
+  text-align: center;
+  flex: 1;
+}
+
+.ed-policy-note-text {
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  color: var(--ed-on-surface-variant);
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.ed-policy-note-asterisk {
+  color: var(--ed-primary);
+  font-weight: 700;
+}
+
+.ed-policy-note-icon {
+  color: var(--ed-primary);
+  font-size: 18px;
+}
+
+// ── Concierge ──────────────────────────────────────────────
+.ed-concierge-section {
+  padding: var(--ed-section-gap) var(--ed-px-desktop);
+  background: var(--ed-bg);
+}
+
+.ed-concierge-card {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  padding: 64px;
+  border-radius: 16px;
+  border: none !important;
+}
+
+.ed-concierge-img {
+  flex: 1;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 125px 10px 125px 10px;
+  }
+}
+
+.ed-concierge-info {
+  flex: 1;
+
+  h2 {
+    font-size: 64px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    margin-top: 8px;
+    color: white;
+  }
+}
+
+.ed-contact-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.ed-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ed-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ed-surface-container);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ed-primary);
+  flex-shrink: 0;
+
+  .material-symbols-outlined {
+    font-size: 24px;
+  }
+}
+
+.ed-contact-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ed-on-surface-variant);
+  margin-bottom: 4px;
+}
+
+.ed-contact-value {
+  font-family: "Sora", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ed-primary);
+  margin: 0 !important;
+}
+
+.ed-contact-address {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 8px !important;
+  color: #f2ca50;
+}
+
+.ed-concierge-btns {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+// ── Popup Modal ────────────────────────────────────────────
+.ed-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ed-popup-content {
+  position: relative;
+  background: linear-gradient(135deg, var(--ed-bg) 0%, var(--ed-surface) 100%);
+  border: 2px solid var(--ed-primary);
+  border-radius: 16px;
+  padding: 48px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow:
+    0 0 60px rgba(212, 175, 55, 0.2),
+    0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ed-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--ed-primary);
+  font-size: 36px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.ed-popup-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.ed-popup-subtitle {
+  font-size: 16px;
+  color: var(--ed-on-surface-variant);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.ed-popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ed-popup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .material-symbols-outlined {
+    font-size: 24px;
+  }
+}
+
+.ed-popup-btn-call {
+  background: var(--ed-primary);
+  color: var(--ed-on-primary);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(242, 202, 80, 0.3);
+  }
+}
+
+.ed-popup-btn-whatsapp {
+  background: #25d366;
+  color: white;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  }
+}
+
+// ── Footer ─────────────────────────────────────────────────
+
+.ed-footer {
+  padding: 64px var(--ed-px-desktop);
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.ed-footer-brand .ed-logo {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.ed-copyright {
+  font-size: 12px;
+  color: var(--ed-on-surface-variant);
+  text-transform: uppercase;
+}
+
+.ed-footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.ed-footer-link {
+  text-decoration: none;
+  font-size: 12px;
+  color: var(--ed-on-surface-variant);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--ed-primary);
+  }
+}
+
+.ed-social-icons {
+  display: flex;
+  gap: 24px;
+}
+
+.ed-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    border-color: var(--ed-primary);
+    color: var(--ed-primary);
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}
+
+// ── Responsive ─────────────────────────────────────────────
+@media (max-width: 1024px) {
+  .ed-navbar {
+    padding: 24px 40px;
+  }
+  .ed-hero {
+    padding: 0 40px;
+  }
+  .ed-hero-title {
+    font-size: 56px;
+  }
+
+  .ed-bento-grid {
+    grid-template-rows: repeat(2, 350px);
+  }
+
+  .ed-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ed-pricing-card--featured {
+    grid-column: span 2;
+    transform: scale(1);
+    margin: 20px 0;
+  }
+
+  .ed-concierge-card {
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .ed-concierge-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex: unset;
+  }
+
+  .ed-footer {
+    padding: 40px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ed-footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --ed-px-desktop: 24px;
+  }
+
+  .ed-nav-links,
+  .ed-nav-actions .ed-nav-icon {
+    display: none;
+  }
+
+  .ed-hero-title {
+    font-size: 40px;
+  }
+  .ed-hero-btns {
+    flex-direction: column;
+  }
+
+  .ed-hero-stats {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 60px;
+    flex-wrap: wrap;
+  }
+
+  .ed-bento-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ed-bento-card {
+    height: 300px;
+  }
+
+  .ed-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ed-pricing-card--featured {
+    grid-column: span 1;
+  }
+
+  .ed-concierge-info h2 {
+    font-size: 40px;
+  }
+  .ed-contact-value {
+    font-size: 24px;
+  }
+
+  .ed-concierge-btns {
+    flex-direction: column;
+  }
+}
