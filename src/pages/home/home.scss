@@ -575,7 +575,6 @@
   color: var(--ed-on-surface-variant);
   letter-spacing: 0.05em;
   display: inline-flex;
-  align-items: center;
   gap: 8px;
   margin: 0;
 }
@@ -886,6 +885,28 @@
 }
 
 // ── Responsive ─────────────────────────────────────────────
+@media (max-width: 992px) {
+  .ed-nav-links {
+    display: none;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .ed-nav-actions {
+    min-width: 99px;
+    position: absolute;
+    right: 100px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1400px) {
+  .ed-nav-actions {
+    min-width: 99px;
+    position: absolute;
+    right: 175px;
+  }
+}
+
 @media (max-width: 1024px) {
   .ed-navbar {
     padding: 24px 40px;
@@ -902,13 +923,17 @@
   }
 
   .ed-pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+  }
+  .ed-pricing-card {
+    width: 70% !important;
   }
 
   .ed-pricing-card--featured {
-    grid-column: span 2;
     transform: scale(1);
     margin: 20px 0;
+    width: 80% !important;
   }
 
   .ed-concierge-card {
@@ -985,5 +1010,69 @@
 
   .ed-concierge-btns {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .ed-hero {
+    padding: 15px !important;
+  }
+
+  .ed-hero-content {
+    max-width: 85% !important;
+  }
+
+  .ed-hero-stats {
+    position: absolute;
+    bottom: 10px;
+  }
+
+  .ed-stat-value {
+    font-size: 16px;
+  }
+
+  .ed-logo {
+    font-size: 18px;
+  }
+
+  .ed-navbar {
+    padding: 16px 30px !important;
+    justify-content: space-between;
+  }
+
+  .ed-nav-actions {
+    position: absolute;
+    right: 65px;
+  }
+
+  .ed-section-header h2 {
+    font-size: 26px !important;
+  }
+
+  .ed-bento-title {
+    font-size: 18px !important;
+  }
+
+  .ed-policy-notes-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .ed-investment,
+  .ed-concierge-section {
+    padding: 44px 28px !important;
+  }
+
+  .ed-popup-title {
+    font-size: 28px !important;
+  }
+
+  .ed-popup-subtitle {
+    font-size: 14px !important;
+  }
+
+  .ed-popup-content {
+    padding: 28px !important;
   }
 }
