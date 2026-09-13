@@ -1,0 +1,90 @@
+{
+  "title": "Architects of Exclusivity.",
+  "subtitle": "The collegiate leadership steering Tamil Nadu's premiere luxury automotive collective with uncompromising craftsmanship, equal stewardship, and white-glove precision.",
+  "founders": [
+    {
+      "id": 1,
+      "name": "Ajith S",
+      "role": "FOUNDER",
+      "subtitle": "Pioneering Vision & Governance",
+      "quote": "Your trust is our foundation. We put customer satisfaction first—reliable vehicles, exceptional service, and your safety is our unwavering commitment.",
+      "icon": "verified",
+      "image": "/images/founders/ajith.jpg",
+      "phone": "+918608154648",
+      "whatsapp": "+918608154648",
+      "instagram": "_invinci_ble_boy_",
+      "email": "ajibalan002@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "name": "Boopathy K",
+      "role": "FOUNDER",
+      "subtitle": "Strategic Growth & Expansion",
+      "quote": "Every customer deserves transparent service and hassle-free bookings. We build partnerships by delivering consistent excellence and uncompromised reliability.",
+      "icon": "query_stats",
+      "image": "/images/founders/boopathy.jpg",
+      "phone": "+919080816826",
+      "whatsapp": "+919080816826",
+      "instagram": "__mr_boopathy__",
+      "email": "boopathy15100@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "name": "Dhinakaran R",
+      "role": "FOUNDER",
+      "subtitle": "Fleet Logistics & Dispatch",
+      "quote": "Your journey matters. On-time pickup, 24/7 support, and zero safety compromises—because your peace of mind drives everything we do.",
+      "icon": "alt_route",
+      "image": "/images/founders/dhina.jpg",
+      "phone": "+919080716002",
+      "whatsapp": "+919080716002",
+      "instagram": "d_h_i_n_a__",
+      "email": "dhinakaranr1107@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "name": "Gopikannan G",
+      "role": "FOUNDER",
+      "subtitle": "Asset Quality & Precision Care",
+      "quote": "Pristine vehicles, rigorous quality checks, and relentless maintenance standards—because driving safety starts with vehicle perfection.",
+      "icon": "directions_car",
+      "image": "/images/founders/gopi.jpg",
+      "phone": "+918610521901",
+      "whatsapp": "+918610521901",
+      "instagram": "its.me_gopi.gk",
+      "email": "gobikannan710@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "name": "Manivannan L",
+      "role": "FOUNDER",
+      "subtitle": "Telemetry & Digital Interfaces",
+      "quote": "Transparent tracking, instant support, and seamless experience—technology empowers customers to rent with confidence and complete control.",
+      "icon": "terminal",
+      "image": "/images/founders/pavish.jpg",
+      "phone": "+916369098981",
+      "whatsapp": "+916369098981",
+      "instagram": "pavish_hp",
+      "email": "pavishhp123@gmail.com",
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "name": "Sathis Kumar Chandran",
+      "role": "FOUNDER",
+      "subtitle": "VIP Hospitality & Chauffeurs",
+      "quote": "Beyond transportation, we curate unforgettable journeys—luxury meets meticulous care, where every detail reflects our devotion to your elevated experience.",
+      "icon": "star",
+      "image": "/images/founders/sathis.jpg",
+      "phone": "+919788309432",
+      "whatsapp": "+919788309432",
+      "instagram": "_sathis.kumar_",
+      "email": "sathiskumarc0304@gmail.com",
+      "isActive": true
+    }
+  ]
+}
