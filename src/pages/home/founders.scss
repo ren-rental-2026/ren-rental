@@ -300,6 +300,10 @@
   }
 }
 
+.ed-btn-label {
+  display: inline-block;
+}
+
 .ed-btn-social {
   width: 36px;
   height: 36px;
@@ -401,5 +405,22 @@
   .ed-btn-social {
     width: 36px;
     height: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ed-btn-call,
+  .ed-btn-whatsapp {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    padding: 0;
+    gap: 0;
+    flex: 0 0 auto;
+  }
+
+  .ed-btn-call .ed-btn-label,
+  .ed-btn-whatsapp .ed-btn-label {
+    display: none;
   }
 }
