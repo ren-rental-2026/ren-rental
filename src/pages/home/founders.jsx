@@ -90,14 +90,14 @@ export default function Founders() {
                 onClick={() => handleCallDesk(founder.phone)}
               >
                 <span className="material-symbols-outlined">call</span>
-                CALL
+                <span className="ed-btn-label">CALL</span>
               </button>
               <button
                 className="ed-btn-social ed-btn-whatsapp"
                 onClick={() => handleWhatsApp(founder.whatsapp)}
               >
                 <span className="material-symbols-outlined">chat</span>
-                WhatsApp
+                <span className="ed-btn-label">WhatsApp</span>
               </button>
               <button
                 className="ed-btn-social ed-btn-instagram"
