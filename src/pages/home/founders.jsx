@@ -1,12 +1,16 @@
-import { useState } from "react";
 import "./founders.scss";
 import foundersData from "../../data/founders.json";
 
 export default function Founders() {
-  const { title, subtitle, founders } = foundersData;
+  const { subtitle, founders } = foundersData;
 
   const handleCallDesk = (phone) => {
-    window.location.href = `tel:${phone}`;
+    const telLink = document.createElement("a");
+    telLink.href = `tel:${phone}`;
+    telLink.style.display = "none";
+    document.body.appendChild(telLink);
+    telLink.click();
+    document.body.removeChild(telLink);
   };
 
   const handleWhatsApp = (phone) => {
