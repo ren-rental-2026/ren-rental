@@ -1,5 +1,6 @@
 import "./founders.scss";
 import foundersData from "../../data/founders.json";
+import { InstagramIcon } from "../../components/Icons";
 
 export default function Founders() {
   const { subtitle, founders } = foundersData;
@@ -104,7 +105,7 @@ export default function Founders() {
                 onClick={() => handleInstagram(founder.instagram)}
                 title="Instagram"
               >
-                <span className="material-symbols-outlined">photo_camera</span>
+                <InstagramIcon size={18} className="ed-instagram-icon" />
               </button>
               <button
                 className="ed-btn-social ed-btn-instagram"

@@ -356,6 +356,14 @@
   border-color: rgba(242, 202, 80, 0.3);
   color: #f2ca50;
 
+  .ed-instagram-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   &:hover {
     background: rgba(242, 202, 80, 0.1);
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
