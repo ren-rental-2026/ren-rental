@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "./home.scss";
 import car_full_image from "../../../public/images/car_full_image.png";
 import front_view_tribber from "../../../public/images/front-view-tribber.jpg";
 import Founders from "./founders";
