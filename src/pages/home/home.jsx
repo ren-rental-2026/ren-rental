@@ -1,114 +1,22 @@
-import { useState, useEffect, useRef } from "react";
-import "./home.scss";
+import car_full_image from "../../../public/images/car_full_image.png";
+import front_view_tribber from "../../../public/images/front-view-tribber.jpg";
 import Founders from "./founders";
-import { InstagramIcon, WhatsAppIcon } from "../../components/Icons";
-
-const car_full_image = "/images/car_full_image.png";
-const front_view_tribber = "/images/front-view-tribber.jpg";
+import homeContent from "./home-content.json";
 
 const NAV_LINKS = ["Fleet", "Experience", "Packages", "Enquiry"];
+const { bentoCards, plans, policyNotes } = homeContent;
 
-const BENTO_CARDS = [
-  {
-    alt: "Triber Interior",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC_YOjmVSz7jK6piMO2X3gBMRszVlLDkhd3toE5qLl1f9Obne7d0ixQA0OuQwCbJm2QrfIj80xC_WcXmukLQgWVD22yJSq9U4rIlr8DUz6YH6sucmfc699Vqm1ANed1bvHICRqgQS-gCb2lpYYps4mvrzIeMhe3V0T5pAdGq_hRf427dJXN5sVCKcE3_k6uNuMBGO2UfZZ5GT7pN39rMSe2J0Ob0j62hHvfl8N13D_NwSH5b7rS9OpDzIeVPGh7m4tbjRWVT2kGp5iu",
-    tag: "ROOM TO BREATHE",
-    title: "Spacious 7 Seater",
-    size: "large",
-  },
-  {
-    alt: "Infotainment Screen",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDVhJUg0OuFstbOpVRgPmr9FTAXbjfuA1tO40jAUPtfZcBdttqOSpT2HA6Qof0bdLLbAJkn3yvpCsQC47QDwRMYb_SyRSWT0JtgwiwcPnBXcimQnOGgEmo5-DqN4gkMc9si2jIb2rmSNPK_V52s92qB45-3Aw24zYB5ZhRoicUMeONuTBcFm3hbRT-7P5bWhpw1Dbto24KcjPwfINyDI0aDv1Sp2HLgIEEvqo_W5o_aNuWF8gAh1jxFvN96LsqhvKocdXlP3uw_LyVH",
-    tag: "Technology",
-    title: "Touchscreen Infotainment",
-    size: "vertical",
-  },
-  {
-    alt: "Climate Control",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9uiviPwfbt_Mfeg5k873BBVGqMvSApMdrm0E8pacudXe2yus7Akhgbhs--1lVW_Ek21RLqRzqorllm69dR2tahG4LodEVRTRcQsznaxK1zHnfDmGwcknDRNa4vJSZw4kLFNdwitF4fzW3C8Warn512KkAGtR_ITiD-DUksbr5ayWPTnJWc4Lb7gcpY39HAxwJutmVJ8n7FVuOyq3X_yu_v3jfULWO0em28IVJgdCkAf-EVPZrhl0pSJjPHUdC1R2-Hp_N1eIHQGdD",
-    title: "Convenience",
-    tag: "Climate Control",
-    size: "small",
-  },
-  {
-    alt: "Triber Boot Space",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCQ507g742oNLui_paoZfgrn2HRcbVZ0U9MhD920FgWmJ5Igq4f9nrYSW259j8iSliVn76tCR10AtuS3QzHwAfHUEDA9QXsBqY_nhd1jB2-2O1MdD8BdHzKVEy95ECUD0yAm5EVdTHBA4oEqBO_QAk_lgUriJ8J0aSVeuxqzEvld5Q1Cw6KxSHXTfRx2MbObMKWnmVNSLGmkrDvsvu9wYuy-Fxvh2jhyiB0Rl8R5Hcbl5omUittTnMcvaqwAU4-i6qQSGKIfE6il06O",
-    tag: "Versatility",
-    title: "625L Flexible Boot Space",
-    size: "medium",
-  },
-];
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.5a1 1 0 11-2 0 1 1 0 012 0z" />
+  </svg>
+);
 
-const POLICY_NOTES = [
-  {
-    icon: "local_gas_station",
-    text: "Fuel cost not included. We follow a Full-to-Full fuel policy.",
-  },
-  {
-    icon: "person",
-    text: "Professional drivers available at additional cost.",
-  },
-  {
-    icon: "toll",
-    text: "Toll charges, Interstate tax, and e-pass charges are excluded.",
-  },
-];
-
-const PLANS = [
-  {
-    type: "Basic Drive",
-    subtitle: "Perfect for Short City Trips",
-    price: "₹2500",
-    unit: "/ DAY",
-    features: [
-      "250 KM Included",
-      "Free cancellation",
-      "Insurance included",
-      "Doorstep Delivery & Pickup",
-      "Extra KM @ ₹10/KM (Up to 300 KM)",
-    ],
-    featured: false,
-    icon: "check_circle",
-  },
-
-  {
-    type: "STANDARD DRIVE",
-    subtitle: "Most preferred for family travel",
-    price: "₹3000",
-    unit: "/ DAY",
-    features: [
-      "300 KM Included",
-      "Free cancellation",
-      "Insurance included",
-      "Doorstep Delivery & Pickup",
-      "Extra KM @ ₹11/KM",
-    ],
-    featured: true,
-    badge: "Most Booked",
-    icon: "verified",
-  },
-
-  {
-    type: "Outstation Drive",
-    subtitle: "Perfect for long-distance journeys",
-    price: "₹11",
-    unit: "/ KM",
-    features: [
-      "Pay per KM",
-      "Free cancellation",
-      "Insurance included",
-      "Doorstep Delivery & Pickup",
-      "Interstate Travel Allowed",
-    ],
-    featured: false,
-    icon: "check_circle",
-  },
-];
-
-export default function Home() {
+export default function Home({ onAdminOpen }) {
   const [activeLink, setActiveLink] = useState("Fleet");
   const [scrolled, setScrolled] = useState(false);
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const logoHoldRef = useRef({ start: 0, timer: null });
 
   // Create refs for each section
   const heroRef = useRef(null);
@@ -166,6 +74,37 @@ export default function Home() {
     setShowEnquiryPopup(false);
   };
 
+  const handleLogoPointerDown = () => {
+    logoHoldRef.current.start = Date.now();
+    logoHoldRef.current.timer = window.setTimeout(() => {
+      logoHoldRef.current.timer = null;
+    }, 5000);
+  };
+
+  const handleLogoPointerUp = () => {
+    const { start, timer } = logoHoldRef.current;
+    if (timer) {
+      window.clearTimeout(timer);
+    }
+
+    logoHoldRef.current.timer = null;
+    const holdDuration = Date.now() - start;
+    logoHoldRef.current.start = 0;
+
+    if (holdDuration >= 3000 && holdDuration <= 5000) {
+      sessionStorage.setItem("adminmodeenable", "true");
+      onAdminOpen?.();
+    }
+  };
+
+  const handleLogoPointerCancel = () => {
+    const { timer } = logoHoldRef.current;
+    if (timer) {
+      window.clearTimeout(timer);
+    }
+    logoHoldRef.current = { start: 0, timer: null };
+  };
+
   const PHONE_NUMBER = "9498059432";
   const DEFAULT_WHATSAPP_MESSAGE =
     "Hi Ren Rental Team, I would like to book the Renault Triber rental. Please assist with availability and pricing.";
@@ -180,14 +119,7 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
-  const handleWhatsAppClick = () => {
-    window.open(
-      `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(DEFAULT_WHATSAPP_MESSAGE)}`,
-      "_blank",
-    );
-  };
-
-  const handleBookNowClick = () => {
+  const handleWhatsAppBookingClick = () => {
     window.open(
       `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(DEFAULT_WHATSAPP_MESSAGE)}`,
       "_blank",
@@ -206,7 +138,16 @@ export default function Home() {
     <div className="ed-root">
       {/* NAVBAR */}
       <nav className={`ed-navbar${scrolled ? " ed-navbar--scrolled" : ""}`}>
-        <div className="ed-logo">Ren Rental</div>
+        <div
+          className="ed-logo"
+          onPointerCancel={handleLogoPointerCancel}
+          onPointerDown={handleLogoPointerDown}
+          onPointerLeave={handleLogoPointerCancel}
+          onPointerUp={handleLogoPointerUp}
+          style={{ cursor: "pointer", userSelect: "none" }}
+        >
+          Ren Rental
+        </div>
         <div className="ed-nav-links">
           {NAV_LINKS.map((link) => (
             <a
@@ -250,7 +191,10 @@ export default function Home() {
             long family road trips.
           </p>
           <div className="ed-hero-btns">
-            <button className="ed-btn-primary" onClick={handleBookNowClick}>
+            <button
+              className="ed-btn-primary"
+              onClick={handleWhatsAppBookingClick}
+            >
               BOOK YOUR DATES
             </button>
             <button
@@ -290,7 +234,7 @@ export default function Home() {
           </p>
         </div>
         <div className="ed-bento-grid">
-          {BENTO_CARDS.map((card) => (
+          {bentoCards.map((card) => (
             <div
               key={card.title}
               className={`ed-bento-card ed-bento-card--${card.size}`}
@@ -317,7 +261,7 @@ export default function Home() {
           <h2>Self-Drive Packages</h2>
         </div>
         <div className="ed-pricing-grid">
-          {PLANS.map((plan) => (
+          {plans.map((plan) => (
             <div
               key={plan.type}
               className={`ed-pricing-card${plan.featured ? " ed-pricing-card--featured" : " ed-glass-panel"}`}
@@ -348,12 +292,15 @@ export default function Home() {
               {plan.featured ? (
                 <button
                   className="ed-btn-reserve ed-metallic-gradient"
-                  onClick={handleBookNowClick}
+                  onClick={handleWhatsAppBookingClick}
                 >
                   RESERVE NOW
                 </button>
               ) : (
-                <button className="ed-btn-select" onClick={handleBookNowClick}>
+                <button
+                  className="ed-btn-select"
+                  onClick={handleWhatsAppBookingClick}
+                >
                   RESERVE NOW
                 </button>
               )}
@@ -362,7 +309,7 @@ export default function Home() {
         </div>
 
         <div className="ed-policy-notes-container">
-          {POLICY_NOTES.map((note, index) => (
+          {policyNotes.map((note, index) => (
             <div key={index} className="ed-policy-note">
               <p className="ed-policy-note-text">
                 <span className="ed-policy-note-asterisk">*</span>
@@ -451,10 +398,10 @@ export default function Home() {
           </div>
           <div
             className="ed-social-btn"
-            onClick={handleWhatsAppClick}
+            onClick={handleWhatsAppBookingClick}
             style={{ cursor: "pointer" }}
           >
-            <WhatsAppIcon />
+            <span className="material-symbols-outlined">chat</span>
           </div>
           <div
             className="ed-social-btn"
@@ -491,7 +438,7 @@ export default function Home() {
               </button>
               <button
                 className="ed-popup-btn ed-popup-btn-whatsapp"
-                onClick={handleWhatsAppClick}
+                onClick={handleWhatsAppBookingClick}
               >
                 <span className="material-symbols-outlined">chat</span>
                 Chat on WhatsApp

@@ -1,0 +1,94 @@
+{
+  "bentoCards": [
+    {
+      "alt": "Triber Interior",
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuC_YOjmVSz7jK6piMO2X3gBMRszVlLDkhd3toE5qLl1f9Obne7d0ixQA0OuQwCbJm2QrfIj80xC_WcXmukLQgWVD22yJSq9U4rIlr8DUz6YH6sucmfc699Vqm1ANed1bvHICRqgQS-gCb2lpYYps4mvrzIeMhe3V0T5pAdGq_hRf427dJXN5sVCKcE3_k6uNuMBGO2UfZZ5GT7pN39rMSe2J0Ob0j62hHvfl8N13D_NwSH5b7rS9OpDzIeVPGh7m4tbjRWVT2kGp5iu",
+      "tag": "ROOM TO BREATHE",
+      "title": "Spacious 7 Seater",
+      "size": "large"
+    },
+    {
+      "alt": "Infotainment Screen",
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVhJUg0OuFstbOpVRgPmr9FTAXbjfuA1tO40jAUPtfZcBdttqOSpT2HA6Qof0bdLLbAJkn3yvpCsQC47QDwRMYb_SyRSWT0JtgwiwcPnBXcimQnOGgEmo5-DqN4gkMc9si2jIb2rmSNPK_V52s92qB45-3Aw24zYB5ZhRoicUMeONuTBcFm3hbRT-7P5bWhpw1Dbto24KcjPwfINyDI0aDv1Sp2HLgIEEvqo_W5o_aNuWF8gAh1jxFvN96LsqhvKocdXlP3uw_LyVH",
+      "tag": "Technology",
+      "title": "Touchscreen Infotainment",
+      "size": "vertical"
+    },
+    {
+      "alt": "Climate Control",
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuC9uiviPwfbt_Mfeg5k873BBVGqMvSApMdrm0E8pacudXe2yus7Akhgbhs--1lVW_Ek21RLqRzqorllm69dR2tahG4LodEVRTRcQsznaxK1zHnfDmGwcknDRNa4vJSZw4kLFNdwitF4fzW3C8Warn512KkAGtR_ITiD-DUksbr5ayWPTnJWc4Lb7gcpY39HAxwJutmVJ8n7FVuOyq3X_yu_v3jfULWO0em28IVJgdCkAf-EVPZrhl0pSJjPHUdC1R2-Hp_N1eIHQGdD",
+      "title": "Convenience",
+      "tag": "Climate Control",
+      "size": "small"
+    },
+    {
+      "alt": "Triber Boot Space",
+      "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCQ507g742oNLui_paoZfgrn2HRcbVZ0U9MhD920FgWmJ5Igq4f9nrYSW259j8iSliVn76tCR10AtuS3QzHwAfHUEDA9QXsBqY_nhd1jB2-2O1MdD8BdHzKVEy95ECUD0yAm5EVdTHBA4oEqBO_QAk_lgUriJ8J0aSVeuxqzEvld5Q1Cw6KxSHXTfRx2MbObMKWnmVNSLGmkrDvsvu9wYuy-Fxvh2jhyiB0Rl8R5Hcbl5omUittTnMcvaqwAU4-i6qQSGKIfE6il06O",
+      "tag": "Versatility",
+      "title": "625L Flexible Boot Space",
+      "size": "medium"
+    }
+  ],
+  "policyNotes": [
+    {
+      "icon": "local_gas_station",
+      "text": "Fuel cost not included. We follow a Full-to-Full fuel policy."
+    },
+    {
+      "icon": "person",
+      "text": "Professional drivers available at additional cost."
+    },
+    {
+      "icon": "toll",
+      "text": "Toll charges, Interstate tax, and e-pass charges are excluded."
+    }
+  ],
+  "plans": [
+    {
+      "type": "Basic Drive",
+      "subtitle": "Perfect for Short City Trips",
+      "price": "₹2500",
+      "unit": "/ DAY",
+      "features": [
+        "250 KM Included",
+        "Free cancellation",
+        "Insurance included",
+        "Doorstep Delivery & Pickup",
+        "Extra KM @ ₹10/KM (Up to 300 KM)"
+      ],
+      "featured": false,
+      "icon": "check_circle"
+    },
+    {
+      "type": "STANDARD DRIVE",
+      "subtitle": "Most preferred for family travel",
+      "price": "₹3000",
+      "unit": "/ DAY",
+      "features": [
+        "300 KM Included",
+        "Free cancellation",
+        "Insurance included",
+        "Doorstep Delivery & Pickup",
+        "Extra KM @ ₹11/KM"
+      ],
+      "featured": true,
+      "badge": "Most Booked",
+      "icon": "verified"
+    },
+    {
+      "type": "Outstation Drive",
+      "subtitle": "Perfect for long-distance journeys",
+      "price": "₹11",
+      "unit": "/ KM",
+      "features": [
+        "Pay per KM",
+        "Free cancellation",
+        "Insurance included",
+        "Doorstep Delivery & Pickup",
+        "Interstate Travel Allowed"
+      ],
+      "featured": false,
+      "icon": "check_circle"
+    }
+  ]
+}
