@@ -1,0 +1,114 @@
+{
+  "navigationItems": [
+    {
+      "path": "/admin/reservations",
+      "page": "reservations",
+      "icon": "calendar_today",
+      "label": "Reservations"
+    },
+    {
+      "path": "/admin/billing",
+      "page": "billing",
+      "icon": "receipt_long",
+      "label": "Billing & Invoices"
+    },
+    {
+      "path": "/admin/setting",
+      "page": "settings",
+      "icon": "tune",
+      "label": "Settings"
+    }
+  ],
+  "adminPageDetails": {
+    "reservations": {
+      "title": "Reservations",
+      "description": "Reservation management will appear here."
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Admin settings will appear here."
+    }
+  },
+  "chargeTypes": [
+    {
+      "icon": "toll",
+      "label": "Toll Charges",
+      "detail": "FASTag / toll receipts",
+      "field": "tollCharges"
+    },
+    {
+      "icon": "local_gas_station",
+      "label": "Fuel Charges",
+      "detail": "Fuel adjustment",
+      "field": "fuelCharges"
+    },
+    {
+      "icon": "sports_motorsports",
+      "label": "Driver Service Charges",
+      "detail": "Driver or service fee",
+      "field": "driverCharges"
+    },
+    {
+      "icon": "sanitizer",
+      "label": "Cleaning & Sanitization",
+      "detail": "Cleaning fee",
+      "field": "cleaningCharges"
+    },
+    {
+      "icon": "alarm",
+      "label": "Late Return Penalty",
+      "detail": "Late return fee",
+      "field": "lateReturnCharges"
+    },
+    {
+      "icon": "build_circle",
+      "label": "Damage Assessment Fee",
+      "detail": "Damage / repair fee",
+      "field": "damageCharges"
+    }
+  ],
+  "dispatchChecks": [
+    "Vehicle Physical Key Logged",
+    "Fuel Level Verified",
+    "Odometer Verified"
+  ],
+  "billingSchemes": [
+    {
+      "id": "day",
+      "icon": "calendar_today",
+      "label": "Day Basis"
+    },
+    {
+      "id": "km",
+      "icon": "speed",
+      "label": "KM Basis"
+    },
+    {
+      "id": "package",
+      "icon": "inventory_2",
+      "label": "Complete Package"
+    }
+  ],
+  "invoiceSocialLinks": [
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/ren.rental",
+      "icon": "photo_camera"
+    },
+    {
+      "label": "WhatsApp",
+      "href": "https://wa.me/919498059432",
+      "icon": "chat"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:ren.rental.2026@gmail.com",
+      "icon": "mail"
+    },
+    {
+      "label": "Website",
+      "href": "https://ren-rental.pages.dev/",
+      "icon": "language"
+    }
+  ]
+}
