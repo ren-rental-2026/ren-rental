@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./home.scss";
 import car_full_image from "../../../public/images/car_full_image.png";
 import front_view_tribber from "../../../public/images/front-view-tribber.jpg";
 import Founders from "./founders";
 import homeContent from "./home-content.json";
+import ConciergeWidget from "../../components/ConciergeWidget";
 
 const NAV_LINKS = ["Fleet", "Experience", "Packages", "Enquiry"];
 const { bentoCards, plans, policyNotes } = homeContent;
@@ -126,6 +128,71 @@ export default function Home({ onAdminOpen }) {
       `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(DEFAULT_WHATSAPP_MESSAGE)}`,
       "_blank",
     );
+  };
+
+  const handleCallbackRequest = async ({ travelDate, mobile, name, email }) => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      throw new Error("EMAILJS_NOT_CONFIGURED");
+    }
+
+    const message = [
+      "Hi Ren Rental Team, I would like to check availability for the Renault Triber 2026.",
+      `Preferred travel date: ${travelDate}`,
+      `Mobile: ${mobile}`,
+      name && `Name: ${name}`,
+      email && `Email: ${email}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const whatsappUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+    let whatsappPopupOpened = false;
+    try {
+      const whatsappWindow = window.open(whatsappUrl, "_blank");
+      if (whatsappWindow) {
+        whatsappWindow.opener = null;
+        whatsappPopupOpened = true;
+      }
+    } catch (error) {
+      console.error("Could not open WhatsApp:", error);
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          vehicle_name: "Renault Triber 2026",
+          preferred_travel_date: travelDate,
+          customer_mobile: mobile,
+          customer_name: name || "Not provided",
+          customer_email: email || "Not provided",
+          message,
+        },
+        {
+          publicKey,
+          blockHeadless: true,
+          limitRate: { id: "ren-rental-callback", throttle: 60000 },
+        },
+      );
+    } catch (error) {
+      console.error("EmailJS callback delivery failed:", error);
+      return {
+        emailSent: false,
+        whatsappPopupOpened,
+        whatsappUrl,
+      };
+    }
+
+    return {
+      emailSent: true,
+      whatsappPopupOpened,
+      whatsappUrl,
+    };
   };
 
   const handleInstagramClick = () => {
@@ -449,6 +516,8 @@ export default function Home({ onAdminOpen }) {
           </div>
         </div>
       )}
+
+      <ConciergeWidget onSubmit={handleCallbackRequest} />
     </div>
   );
 }
