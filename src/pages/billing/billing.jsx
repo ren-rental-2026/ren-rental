@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./billing.css";
 import billingContent from "./billing-content.json";
+import CalendarDatePicker from "../../components/CalendarDatePicker";
+import { formatSelectedDate } from "../../components/calendarDateUtils";
 
 const {
   navigationItems,
@@ -155,33 +157,8 @@ function MoneyField({
   );
 }
 
-const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const HOURS = Array.from({ length: 12 }, (_, index) => index + 1);
 const MINUTES = Array.from({ length: 60 }, (_, index) => index);
-
-function toLocalDate(dateString) {
-  if (!dateString) return null;
-  const [year, month, day] = dateString.split("-").map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function toDateString(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function formatSelectedDate(dateString) {
-  const date = toLocalDate(dateString);
-  return date
-    ? new Intl.DateTimeFormat("en-IN", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      }).format(date)
-    : "Select date";
-}
 
 function toTimeParts(time) {
   const [hour = "0", minute = "0"] = time.split(":");
@@ -202,11 +179,6 @@ function formatSelectedTime(time) {
 function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
   const pickerRef = useRef(null);
   const [activePicker, setActivePicker] = useState(null);
-  const [visibleMonth, setVisibleMonth] = useState(() => {
-    const selectedDate = toLocalDate(date);
-    const initialDate = selectedDate || new Date();
-    return new Date(initialDate.getFullYear(), initialDate.getMonth(), 1);
-  });
   const [draftTime, setDraftTime] = useState(() =>
     toTimeParts(time || "00:00"),
   );
@@ -229,21 +201,6 @@ function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
     };
   }, [activePicker]);
 
-  const openCalendar = () => {
-    if (activePicker === "date") {
-      setActivePicker(null);
-      return;
-    }
-
-    const selectedDate = toLocalDate(date);
-    if (selectedDate) {
-      setVisibleMonth(
-        new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1),
-      );
-    }
-    setActivePicker("date");
-  };
-
   const openTimePicker = () => {
     if (activePicker === "time") {
       setActivePicker(null);
@@ -254,20 +211,6 @@ function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
     setActivePicker("time");
   };
 
-  const changeMonth = (offset) => {
-    setVisibleMonth(
-      (month) => new Date(month.getFullYear(), month.getMonth() + offset, 1),
-    );
-  };
-
-  const selectDate = (selectedDate) => {
-    onDateChange(toDateString(selectedDate));
-    setVisibleMonth(
-      new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1),
-    );
-    setActivePicker(null);
-  };
-
   const selectTime = () => {
     const hour24 = (draftTime.hour % 12) + (draftTime.period === "PM" ? 12 : 0);
     onTimeChange(
@@ -275,29 +218,6 @@ function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
     );
     setActivePicker(null);
   };
-
-  const monthLabel = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    year: "numeric",
-  }).format(visibleMonth);
-  const calendarStart = new Date(
-    visibleMonth.getFullYear(),
-    visibleMonth.getMonth(),
-    1 - visibleMonth.getDay(),
-  );
-  const today = toDateString(new Date());
-  const calendarDays = Array.from({ length: 42 }, (_, index) => {
-    const calendarDate = new Date(
-      calendarStart.getFullYear(),
-      calendarStart.getMonth(),
-      calendarStart.getDate() + index,
-    );
-    return {
-      date: calendarDate,
-      dateString: toDateString(calendarDate),
-      isCurrentMonth: calendarDate.getMonth() === visibleMonth.getMonth(),
-    };
-  });
 
   return (
     <div className="flex min-w-0 flex-col gap-1">
@@ -308,22 +228,15 @@ function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
         className={`billing-datetime-field${activePicker ? " has-open-picker" : ""}`}
         ref={pickerRef}
       >
-        <button
-          aria-expanded={activePicker === "date"}
-          aria-haspopup="dialog"
-          aria-label={`Choose ${label.toLowerCase()} date`}
-          className={`billing-datetime-trigger billing-date-trigger${activePicker === "date" ? " is-active" : ""}`}
-          onClick={openCalendar}
-          type="button"
-        >
-          <span className="material-symbols-outlined">calendar_month</span>
-          <span className={date ? "" : "is-placeholder"}>
-            {formatSelectedDate(date)}
-          </span>
-          <span className="material-symbols-outlined billing-picker-chevron">
-            expand_more
-          </span>
-        </button>
+        <CalendarDatePicker
+          date={date}
+          isOpen={activePicker === "date"}
+          label={label}
+          onDateChange={onDateChange}
+          onOpenChange={(isOpen) =>
+            setActivePicker(isOpen ? "date" : null)
+          }
+        />
         <span className="billing-datetime-divider" aria-hidden="true" />
         <button
           aria-expanded={activePicker === "time"}
@@ -341,94 +254,6 @@ function DateTimeField({ label, date, time, onDateChange, onTimeChange }) {
             expand_more
           </span>
         </button>
-
-        {activePicker === "date" && (
-          <div
-            aria-label={`${label} calendar`}
-            className="billing-picker-popover billing-calendar-popover"
-            role="dialog"
-          >
-            <div className="billing-calendar-heading">
-              <div>
-                <span className="billing-picker-eyebrow">SELECT DATE</span>
-                <h3>{monthLabel}</h3>
-              </div>
-              <div className="billing-calendar-navigation">
-                <button
-                  aria-label="Previous month"
-                  className="billing-calendar-nav"
-                  onClick={() => changeMonth(-1)}
-                  type="button"
-                >
-                  <span className="material-symbols-outlined">
-                    chevron_left
-                  </span>
-                </button>
-                <button
-                  aria-label="Next month"
-                  className="billing-calendar-nav"
-                  onClick={() => changeMonth(1)}
-                  type="button"
-                >
-                  <span className="material-symbols-outlined">
-                    chevron_right
-                  </span>
-                </button>
-              </div>
-            </div>
-            <div className="billing-calendar-grid billing-calendar-weekdays">
-              {WEEKDAYS.map((weekday) => (
-                <span key={weekday}>{weekday}</span>
-              ))}
-            </div>
-            <div className="billing-calendar-grid">
-              {calendarDays.map(
-                ({ date: calendarDate, dateString, isCurrentMonth }) => (
-                  <button
-                    aria-label={new Intl.DateTimeFormat("en-IN", {
-                      dateStyle: "full",
-                    }).format(calendarDate)}
-                    aria-pressed={date === dateString}
-                    className={[
-                      "billing-calendar-day",
-                      isCurrentMonth ? "" : "is-outside-month",
-                      date === dateString ? "is-selected" : "",
-                      today === dateString ? "is-today" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    key={dateString}
-                    onClick={() => selectDate(calendarDate)}
-                    type="button"
-                  >
-                    {calendarDate.getDate()}
-                  </button>
-                ),
-              )}
-            </div>
-            <div className="billing-calendar-footer">
-              <button
-                className="billing-picker-text-button"
-                onClick={() => selectDate(new Date())}
-                type="button"
-              >
-                Today
-              </button>
-              {date && (
-                <button
-                  className="billing-picker-text-button"
-                  onClick={() => {
-                    onDateChange("");
-                    setActivePicker(null);
-                  }}
-                  type="button"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-          </div>
-        )}
 
         {activePicker === "time" && (
           <div
